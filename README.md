@@ -10,6 +10,14 @@ A Claude Code plugin marketplace with 3 focused plugins for Java developers. All
 | `java-spring` | 4 | 2 | `java-spring-expert` | Spring Boot projects |
 | `java-quality` | 3 | 1 | `java-security-reviewer`, `java-performance-reviewer`, `java-test-engineer` | Quality enforcement |
 
+## Quick Setup (5 minutes)
+
+1. Copy [`templates/CLAUDE.md.template`](templates/CLAUDE.md.template) to your Java project root as `CLAUDE.md` and fill in the placeholders
+2. Copy [`templates/settings.json.template`](templates/settings.json.template) to `.claude/settings.local.json` to pre-approve build/test commands
+3. Install the plugins (below)
+
+---
+
 ## Installation
 
 ### Step 1 — Add the marketplace

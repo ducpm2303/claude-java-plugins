@@ -1,0 +1,116 @@
+# CLAUDE.md — Java Project
+
+<!--
+  HOW TO USE THIS TEMPLATE
+  ========================
+  1. Copy this file to the root of your Java project as CLAUDE.md
+  2. Fill in the sections marked with [REPLACE: ...]
+  3. Install the plugins (see Plugins section below)
+  4. Delete this comment block
+
+  Plugins used by this template:
+    /plugin marketplace add ducpm2303/claude-java-plugins
+    /plugin install java-core@java-plugins
+    /plugin install java-spring@java-plugins     # remove if not a Spring Boot project
+    /plugin install java-quality@java-plugins
+-->
+
+## Project
+
+**Name:** [REPLACE: e.g. order-service]
+**Java version:** [REPLACE: 8 / 11 / 17 / 21]
+**Spring Boot version:** [REPLACE: 2.7.x / 3.2.x / 3.3.x — remove if not Spring Boot]
+**Build tool:** [REPLACE: Maven / Gradle]
+**Base package:** [REPLACE: e.g. com.example.orders]
+
+## Build & Run Commands
+
+```bash
+# Build
+[REPLACE: mvn clean package  OR  ./gradlew clean build]
+
+# Run tests
+[REPLACE: mvn test  OR  ./gradlew test]
+
+# Run tests with coverage
+[REPLACE: mvn test jacoco:report  OR  ./gradlew test jacocoTestReport]
+
+# Start the application
+[REPLACE: mvn spring-boot:run  OR  ./gradlew bootRun]
+
+# Start local database (if applicable)
+[REPLACE: docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres:16-alpine]
+```
+
+## Preferred Workflows
+
+When I ask for help, use these skills from the installed plugins:
+
+- **Code review** → `/java-core:java-review`
+- **Fix compile errors / stack traces** → `/java-core:java-fix`
+- **Refactor** → `/java-core:java-refactor`
+- **Generate tests** → `/java-quality:java-test`
+- **Security scan** → `/java-quality:java-security-check`
+- **Performance scan** → `/java-quality:java-perf-check`
+- **Full quality audit** → `/java-quality:audit`
+- **CRUD feature** → `/java-spring:java-crud` *(Spring Boot projects only)*
+- **JPA review** → `/java-spring:java-jpa` *(Spring Boot projects only)*
+- **Commit message** → `/java-core:java-commit`
+
+For architectural questions, delegate to the `java-architect` agent.
+For deep security audits, delegate to the `java-security-reviewer` agent.
+
+## Coding Standards
+
+The plugins enforce these automatically — listed here as a reminder:
+
+- Constructor injection only (`final` fields, no `@Autowired` on fields)
+- `@Transactional(readOnly = true)` on all read-only service methods
+- Return `ResponseEntity<T>` from all controller methods
+- Validate `@RequestBody` with `@Valid`
+- Never log passwords, tokens, or PII
+- Use `jakarta.persistence.*` (Spring Boot 3.x+) or `javax.persistence.*` (2.x)
+
+[REPLACE: add any project-specific conventions here]
+
+## Architecture
+
+[REPLACE: brief description, e.g.:]
+```
+Controller → Service → Repository (layered)
+Packages: controller / service / repository / entity / dto / exception / config
+Database: PostgreSQL (Testcontainers for integration tests)
+```
+
+## Key Files
+
+[REPLACE: point Claude to important files it should know about, e.g.:]
+```
+src/main/resources/application.yml     — main config
+src/main/java/.../exception/           — global exception handler
+src/main/java/.../config/              — Spring configuration classes
+```
+
+## What NOT to Do
+
+- Do not modify `pom.xml` / `build.gradle` dependencies without confirming with me
+- Do not change `application.yml` database credentials
+- Do not commit directly to `main` — always use a feature branch
+- [REPLACE: add project-specific restrictions]
+
+## Testing Strategy
+
+- Unit tests: JUnit 5 + Mockito, files named `*Test.java`
+- Integration tests: Testcontainers + `@SpringBootTest`, files named `*IT.java`
+- Run tests before marking any task complete: `[REPLACE: mvn test OR ./gradlew test]`
+- Minimum coverage target: 80% on the service layer
+
+## Environment Variables
+
+[REPLACE: list required env vars so Claude knows not to hardcode them, e.g.:]
+```
+DATABASE_URL      — JDBC connection string
+DATABASE_USER     — database username
+DATABASE_PASSWORD — database password
+JWT_SECRET        — JWT signing key
+```
