@@ -38,3 +38,9 @@ If the fix requires reading a file not currently shown, ask for it: "Can you sha
 
 ## Step 4 — Prevent recurrence
 Add one short note on how to avoid this class of error in the future (e.g., "Use `Objects.requireNonNull()` at method entry to catch nulls early").
+
+## Next Steps
+After applying the fix:
+- Suggest running the build to verify: `mvn compile -q` or `./gradlew build -q`
+- If the fix changed business logic → suggest running `/java-test` to verify behaviour is preserved
+- If the root cause was a design problem → suggest running `/java-review` on the surrounding code

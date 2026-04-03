@@ -47,3 +47,11 @@ Respond with:
 3. **Strengths** — what is done well (at least one observation)
 
 Be concise. Each issue: one sentence description + one-line fix example.
+
+## Next Steps
+After completing this review, offer these follow-up actions based on findings:
+- If structural issues found (long methods, god classes) → suggest running `/java-refactor`
+- If missing or inadequate tests found → suggest running `/java-test`
+- If security issues found (SQL concat, hardcoded secrets, weak crypto) → suggest delegating to the `java-security-reviewer` agent
+- If performance issues found (N+1, unbounded queries, String concatenation in loops) → suggest delegating to the `java-performance-reviewer` agent
+- If Javadoc is missing on public API → suggest running `/java-docs`

@@ -86,3 +86,10 @@ Generate these files for the named entity (e.g., `User`):
 **`application.yml`** with H2 in-memory DB config for development.
 
 After generating, list the files created and suggest running `mvn spring-boot:run` or `./gradlew bootRun`.
+
+## Next Steps
+After scaffolding:
+- Run `/java-review` on the generated code to catch any issues
+- Run `/java-test` to generate tests for the scaffolded service layer
+- If security is critical → ask the `java-security-reviewer` agent to review the controller
+- Start the app: `mvn spring-boot:run` or `./gradlew bootRun`

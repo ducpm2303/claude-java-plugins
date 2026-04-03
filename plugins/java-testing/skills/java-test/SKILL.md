@@ -109,3 +109,10 @@ Note: `@ServiceConnection` requires Spring Boot 3.1+. For Spring Boot 2.x, use `
 - Do NOT test private methods directly — test them through the public API
 
 List the generated test file path at the end, e.g.: `src/test/java/com/example/service/UserServiceTest.java`
+
+## Next Steps
+After generating tests:
+- Run the tests: `mvn test -q` or `./gradlew test`
+- If tests fail → use `/java-fix` with the test failure output
+- If coverage is below 80% on the service layer → ask the `java-test-engineer` agent for a coverage strategy
+- If integration tests use H2 → ask the `java-test-engineer` agent about migrating to Testcontainers

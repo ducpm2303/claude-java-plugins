@@ -36,3 +36,9 @@ For each refactoring:
 5. **Java version required:** (e.g., "Java 8+" or "All versions")
 
 Then offer: "Want me to apply these changes to the file?"
+
+## Next Steps
+After completing refactoring:
+- If tests don't exist for the refactored code → suggest running `/java-test` to generate tests
+- If the refactoring changed public API signatures → suggest running `/java-docs` to update Javadoc
+- Remind the user to run their build: `mvn compile -q` or `./gradlew build -q`
