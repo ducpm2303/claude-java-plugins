@@ -1,6 +1,7 @@
 ---
-description: Review Java code for bugs, naming issues, code smells, and version-appropriate idioms
+description: Reviews Java code for bugs, naming issues, code smells, and version-appropriate idioms. Use when user asks to "review this code", "check my Java", "look at this class", "find issues in", "code review", "what's wrong with this", or "review this file".
 argument-hint: "[paste code or select in editor]"
+allowed-tools: Read, Grep, Glob
 ---
 
 Review the Java code I've selected or provided. Follow these steps:

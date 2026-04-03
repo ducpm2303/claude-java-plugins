@@ -1,5 +1,5 @@
 ---
-description: Review Spring Data JPA usage — N+1 queries, fetch strategies, projections, Specifications, and transaction boundaries
+description: Reviews Spring Data JPA for N+1 queries, fetch strategies, projections, and Specifications. Use when user asks to "review JPA", "check for N+1", "JPA performance", "review my entities", "check fetch strategy", or "review my repositories".
 argument-hint: "[file or class to review, optional]"
 ---
 

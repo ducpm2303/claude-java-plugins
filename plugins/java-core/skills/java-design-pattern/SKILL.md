@@ -1,5 +1,5 @@
 ---
-description: Detect design patterns in Java code, or suggest the right pattern for a given problem
+description: Detects GoF patterns in Java code or recommends the right pattern for a problem. Use when user asks to "what pattern is this", "detect design patterns", "suggest a pattern", "should I use factory", "which design pattern", or "recommend a pattern for".
 argument-hint: "[paste code to detect patterns, or describe your problem]"
 ---
 

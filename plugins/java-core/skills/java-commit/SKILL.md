@@ -1,5 +1,5 @@
 ---
-description: Generate a meaningful git commit message based on the Java files changed
+description: Generates a Conventional Commits message for staged Java changes. Use when user asks to "write a commit message", "help me commit", "what should my commit say", "summarize my changes", "draft a commit", or "create commit message".
 argument-hint: "[leave empty to use git diff, or describe the change]"
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: Generate JUnit 5 + Mockito unit tests or Testcontainers integration tests for Java code
+description: Generates JUnit 5 and Mockito unit tests or Testcontainers integration tests, auto-detecting project setup. Use when user asks to "write tests", "generate tests", "add unit tests", "create test class", "test this service", or "write integration tests".
 argument-hint: "[paste the class to test, or describe what to test]"
 ---
 

@@ -1,6 +1,7 @@
 ---
-description: Explain selected Java code in plain language, including design patterns and idioms used
+description: Explains Java code in plain language including design patterns. Use when user asks to "explain this code", "what does this do", "help me understand", "walk me through this", or "how does this work".
 argument-hint: "[paste code or select in editor]"
+allowed-tools: Read, Grep, Glob
 ---
 
 Explain the Java code I've selected or provided. Tailor the explanation to what the code actually does — avoid generic descriptions.

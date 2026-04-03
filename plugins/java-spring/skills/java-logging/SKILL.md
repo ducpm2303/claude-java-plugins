@@ -1,5 +1,5 @@
 ---
-description: Review logging configuration and usage — SLF4J best practices, MDC context, structured logging, and PII/secret safety
+description: Reviews Java logging for SLF4J best practices, MDC context, structured logging, and PII safety. Use when user asks to "review logging", "check my logs", "logging review", "is my logging correct", "MDC setup", or "check for PII in logs".
 argument-hint: "[file, class, or logback/log4j2 config to review, optional]"
 ---
 

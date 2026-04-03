@@ -1,6 +1,7 @@
 ---
-description: Review Java code for thread safety issues, race conditions, deadlocks, and concurrency anti-patterns
+description: Reviews Java code for thread safety, race conditions, deadlocks, and Java 21 virtual thread compatibility. Use when user asks to "review concurrency", "is this thread safe", "check for race conditions", "concurrency issues", or "virtual thread compatible".
 argument-hint: "[paste concurrent code or select in editor]"
+allowed-tools: Read, Grep, Glob
 ---
 
 Review the Java code for concurrency correctness. Before reviewing, detect the Java version from `pom.xml` or `build.gradle` — suggest modern alternatives only if the version supports them.

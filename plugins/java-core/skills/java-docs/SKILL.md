@@ -1,5 +1,5 @@
 ---
-description: Generate Javadoc comments for selected Java classes and methods
+description: Generates Javadoc comments for Java classes and methods. Use when user asks to "add javadoc", "document this class", "write documentation", "add comments", "generate docs", or "document this method".
 argument-hint: "[paste code or select in editor]"
 ---
 

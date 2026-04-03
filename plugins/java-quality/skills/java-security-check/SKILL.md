@@ -1,6 +1,7 @@
 ---
-description: Quick OWASP security scan of Java code — flags injection risks, hardcoded secrets, weak crypto, and Spring Security misconfigs
+description: Quick OWASP security scan for injection risks, hardcoded secrets, weak crypto, and Spring Security misconfigs. Use when user asks to "security scan", "check for vulnerabilities", "any security issues", "OWASP check", "hardcoded secrets", or "is this secure".
 argument-hint: "[file or class to scan, optional]"
+allowed-tools: Read, Grep, Glob
 ---
 
 # /java-security-check — Java Security Quick Scan

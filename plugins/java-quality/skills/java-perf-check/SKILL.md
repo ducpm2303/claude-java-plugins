@@ -1,6 +1,7 @@
 ---
-description: Quick performance scan of Java code — flags N+1 queries, memory inefficiencies, threading issues, and algorithmic hotspots
+description: Quick Java performance scan flagging N+1 queries, memory issues, threading problems, and algorithmic hotspots. Use when user asks to "check performance", "performance scan", "any N+1 queries", "performance issues", "is this efficient", or "slow code".
 argument-hint: "[file or class to scan, optional]"
+allowed-tools: Read, Grep, Glob
 ---
 
 # /java-perf-check — Java Performance Quick Scan

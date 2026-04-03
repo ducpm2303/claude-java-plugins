@@ -1,5 +1,15 @@
 {
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[java-core] Detecting Java project...' && (cat pom.xml 2>/dev/null | grep -E '<java.version>|<maven.compiler.source>' | head -2 || cat build.gradle 2>/dev/null | grep -E 'sourceCompatibility|JavaVersion' | head -2 || echo '[java-core] No build file found — ask user for Java version if needed.')"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Write|Edit",

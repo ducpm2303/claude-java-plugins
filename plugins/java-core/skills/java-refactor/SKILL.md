@@ -1,5 +1,5 @@
 ---
-description: Suggest and apply version-appropriate refactorings to Java code
+description: Suggests and applies version-gated Java refactorings. Use when user asks to "refactor this", "clean up this code", "modernize this Java", "simplify this", "extract method", "improve this class", or "make this more idiomatic".
 argument-hint: "[paste code or select in editor]"
 ---
 

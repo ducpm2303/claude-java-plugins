@@ -1,6 +1,7 @@
 ---
-description: Check Java code for SOLID principles violations and suggest improvements
+description: Checks Java code for SOLID principles violations with Java-specific patterns. Use when user asks to "check SOLID principles", "is this good OOP", "single responsibility", "SOLID violations", "open closed principle", or "dependency inversion".
 argument-hint: "[paste class or paste multiple related classes]"
+allowed-tools: Read, Grep, Glob
 ---
 
 Review the provided Java code for SOLID principles violations. For each principle, check for violations and suggest targeted improvements. Tailor suggestions to the detected Java version.

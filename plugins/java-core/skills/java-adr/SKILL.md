@@ -1,5 +1,5 @@
 ---
-description: Create, list, or update Architecture Decision Records (ADRs) for your Java project
+description: Creates, lists, and manages Architecture Decision Records for Java projects. Use when user asks to "create an ADR", "document this decision", "write an architecture decision", "add ADR", "list decisions", "show ADRs", or "record this architectural choice".
 argument-hint: "[new <title> | list | show <id> | supersede <id> <title>]"
 ---
 

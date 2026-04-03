@@ -1,12 +1,33 @@
 {
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$CLAUDE_TOOL_INPUT\" | python3 -c \"\nimport sys, json, re\ntry:\n    data = json.load(sys.stdin)\n    cmd = data.get('command', '')\n    dangerous = [\n        (r'git push.*--force.*(main|master)', 'Force push to main/master branch'),\n        (r'git reset --hard', 'Hard reset (discards uncommitted changes)'),\n        (r'mvn.*-Dmaven.test.skip=true', 'Skipping tests in Maven build'),\n        (r'./gradlew.*-x test', 'Skipping tests in Gradle build'),\n    ]\n    for pattern, msg in dangerous:\n        if re.search(pattern, cmd):\n            print(f'[java-quality] WARNING: {msg}: {cmd}', flush=True)\nexcept: pass\n\""
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Write|Edit",
         "hooks": [
           {
             "type": "command",
-            "command": "echo '[java-quality] Java file modified. Consider asking the java-security-reviewer agent to check for OWASP vulnerabilities, or run /java-security-check for a quick scan.'"
+            "command": "echo '[java-quality] Java file modified. Consider running /java-security-check or asking the java-security-reviewer agent to check for OWASP vulnerabilities.'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[java-quality] Session ending. Reminder: run mvn test or ./gradlew test to verify all tests pass before considering this task complete.'"
           }
         ]
       }

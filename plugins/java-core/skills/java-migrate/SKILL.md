@@ -1,5 +1,5 @@
 ---
-description: Interactive guide to upgrade your Java project from one version to another (8→11, 11→17, 17→21)
+description: Interactive Java version upgrade guide (8 to 11, 11 to 17, 17 to 21). Use when user asks to "migrate to Java 17", "upgrade to Java 21", "Java migration guide", "move from Java 11 to 17", or "what changed in Java 21".
 argument-hint: "[current Java version and target version, e.g. '8 to 17']"
 ---
 

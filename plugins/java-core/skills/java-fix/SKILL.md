@@ -1,5 +1,5 @@
 ---
-description: Diagnose Java compile errors or stack traces and propose a targeted fix
+description: Diagnoses and fixes Java compile errors, runtime exceptions, and stack traces. Use when user asks to "fix this error", "this won't compile", "I'm getting an exception", "debug this", or "build is failing".
 argument-hint: "[paste error message or stack trace]"
 ---
 

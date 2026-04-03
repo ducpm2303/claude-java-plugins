@@ -1,6 +1,7 @@
 ---
-description: Review Java REST API design — HTTP status codes, naming, pagination, versioning, error responses, and validation
+description: Reviews Java REST API design including HTTP methods, status codes, naming, and versioning. Use when user asks to "review my API", "check REST design", "is this good REST", "review endpoints", "API design review", "check my controller", or "review HTTP API".
 argument-hint: "[paste controller or API code]"
+allowed-tools: Read, Grep, Glob
 ---
 
 Review the REST API design of the provided Java controller or endpoint code. Detect Spring Boot version from `pom.xml` to tailor advice.

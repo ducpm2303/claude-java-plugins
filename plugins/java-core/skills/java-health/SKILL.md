@@ -1,6 +1,7 @@
 ---
-description: Run a holistic code health check across security, performance, test coverage, code smells, and dependency freshness
+description: Runs a holistic code health check scoring Security, Tests, Performance and Quality with A-F grades. Use when user asks to "check health", "score this project", "health check", "how good is this code", "overall assessment", or "code quality score".
 argument-hint: "[path to file, class, or leave empty for current project]"
+allowed-tools: Read, Grep, Glob
 ---
 
 Run a comprehensive health check on the Java code or project I've indicated. This is an aggregating command — it runs multiple review dimensions and produces a single scored report.
