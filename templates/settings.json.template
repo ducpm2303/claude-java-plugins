@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn clean package)",
+      "Bash(mvn test)",
+      "Bash(mvn test jacoco:report)",
+      "Bash(mvn spring-boot:run)",
+      "Bash(mvn spotbugs:check)",
+      "Bash(mvn checkstyle:check)",
+      "Bash(mvn pmd:check)",
+      "Bash(mvn dependency:tree)",
+      "Bash(./gradlew clean build)",
+      "Bash(./gradlew test)",
+      "Bash(./gradlew test jacocoTestReport)",
+      "Bash(./gradlew bootRun)",
+      "Bash(./gradlew spotbugsMain)",
+      "Bash(./gradlew checkstyleMain)",
+      "Bash(./gradlew pmdMain)",
+      "Bash(./gradlew dependencies)",
+      "Bash(git status)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(git checkout*)",
+      "Bash(git branch*)",
+      "Bash(find src -name '*.java'*)",
+      "Bash(grep -r* src/)",
+      "Bash(docker ps)",
+      "Bash(docker run*postgres*)"
+    ],
+    "deny": [
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)",
+      "Bash(mvn*-Dmaven.test.skip=true*)",
+      "Bash(./gradlew*-x test*)",
+      "Bash(rm -rf*)",
+      "Bash(drop table*)",
+      "Bash(DROP TABLE*)"
+    ]
+  }
+}
