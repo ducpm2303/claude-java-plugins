@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[java-quality] Java file modified. Consider asking the java-security-reviewer agent to check for OWASP vulnerabilities, or run /java-security-check for a quick scan.'"
+          }
+        ]
+      }
+    ]
+  }
+}
