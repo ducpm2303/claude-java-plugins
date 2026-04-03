@@ -16,18 +16,50 @@ All plugins support **Java 8 through Java 21** and tailor advice to your target 
 
 ## Installation
 
-Add the marketplace:
+### Step 1 — Add the marketplace
+
 ```shell
-/plugin marketplace add <your-github-username>/java-plugins
+/plugin marketplace add ducpm2303/claude-java-plugins
 ```
 
-Install individual plugins:
+This registers the marketplace once. Claude Code will fetch the plugin catalog from `https://github.com/ducpm2303/claude-java-plugins`.
+
+### Step 2 — Install plugins
+
+Install only what you need:
+
 ```shell
 /plugin install java-core@java-plugins
 /plugin install java-spring@java-plugins
 /plugin install java-security@java-plugins
 /plugin install java-testing@java-plugins
 /plugin install java-performance@java-plugins
+```
+
+Or install the full suite at once:
+
+```shell
+/plugin install java-core@java-plugins && \
+/plugin install java-spring@java-plugins && \
+/plugin install java-security@java-plugins && \
+/plugin install java-testing@java-plugins && \
+/plugin install java-performance@java-plugins
+```
+
+### Step 3 — Verify installation
+
+```shell
+/plugin list
+```
+
+You should see all installed java-* plugins listed.
+
+### Updating
+
+To get the latest plugin versions:
+
+```shell
+/plugin marketplace update java-plugins
 ```
 
 ## Usage
