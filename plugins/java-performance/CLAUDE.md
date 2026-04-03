@@ -1,3 +1,7 @@
+---
+globs: ["**/*.java", "**/pom.xml", "**/build.gradle", "**/build.gradle.kts"]
+---
+
 # Java Performance — Performance Defaults
 
 These rules apply whenever the java-performance plugin is active.

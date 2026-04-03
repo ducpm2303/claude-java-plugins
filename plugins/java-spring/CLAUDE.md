@@ -1,3 +1,7 @@
+---
+globs: ["**/*.java", "**/pom.xml", "**/build.gradle", "**/build.gradle.kts", "**/application.yml", "**/application.properties"]
+---
+
 # Java Spring — Spring Boot Best Practices
 
 These rules apply whenever the java-spring plugin is active.

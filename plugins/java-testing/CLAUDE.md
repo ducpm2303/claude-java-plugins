@@ -1,3 +1,7 @@
+---
+globs: ["**/*.java", "**/*Test.java", "**/*Tests.java", "**/*IT.java"]
+---
+
 # Java Testing — Testing Standards
 
 These rules apply whenever the java-testing plugin is active.

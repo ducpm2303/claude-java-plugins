@@ -1,3 +1,7 @@
+---
+globs: ["**/*.java", "**/pom.xml", "**/build.gradle", "**/build.gradle.kts"]
+---
+
 # Java Security — Security Defaults
 
 These rules apply whenever the java-security plugin is active.

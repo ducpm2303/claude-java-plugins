@@ -1,3 +1,7 @@
+---
+globs: ["**/*.java", "**/pom.xml", "**/build.gradle", "**/build.gradle.kts"]
+---
+
 # Java Core — Coding Standards
 
 These rules apply whenever the java-core plugin is active.
