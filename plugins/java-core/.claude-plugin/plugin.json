@@ -1,0 +1,10 @@
+{
+  "name": "java-core",
+  "description": "General Java skills, architect agent, and coding standards for Java 8+",
+  "version": "1.0.0",
+  "author": {
+    "name": "java-plugins contributors"
+  },
+  "keywords": ["java", "review", "refactor", "explain", "fix", "docs"],
+  "hooks": "./hooks/hooks.json"
+}
