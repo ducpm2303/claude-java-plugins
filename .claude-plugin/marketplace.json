@@ -5,21 +5,21 @@
   },
   "metadata": {
     "description": "Java developer toolkit for Claude Code — general Java, Spring Boot, and quality (security + performance + testing)",
-    "version": "3.0.0"
+    "version": "2.1.0"
   },
   "plugins": [
     {
       "name": "java-core",
       "source": "./plugins/java-core",
       "description": "General Java skills (review, refactor, explain, fix, docs, health, concurrency, API, migration, commit, SOLID, design patterns, ADR) and architect + build-resolver agents",
-      "version": "3.0.0",
+      "version": "2.1.0",
       "keywords": ["java", "core", "review", "refactor", "solid", "design-patterns", "concurrency", "migrate", "adr"]
     },
     {
       "name": "java-spring",
       "source": "./plugins/java-spring",
       "description": "Spring Boot skills (scaffold new projects, JPA review, logging review, CRUD generator) and Spring expert agent. Supports Spring Boot 2.7.x through 4.0.x.",
-      "version": "3.0.0",
+      "version": "2.1.0",
       "keywords": ["java", "spring", "spring-boot", "scaffold", "jpa", "crud", "logging"]
     },
     {
