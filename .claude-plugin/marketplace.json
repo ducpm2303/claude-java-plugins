@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "Java developer toolkit for Claude Code — general Java, Spring Boot, security, testing, and performance",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "java-core",
       "source": "./plugins/java-core",
       "description": "General Java skills (review, refactor, explain, fix, docs), architect agent, and Java coding standards",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "keywords": ["java", "core", "review", "refactor"]
     },
     {
