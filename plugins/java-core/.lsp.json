@@ -1,0 +1,33 @@
+{
+  "lspServers": {
+    "java": {
+      "command": "jdtls",
+      "args": [],
+      "initializationOptions": {
+        "settings": {
+          "java": {
+            "format": {
+              "enabled": true,
+              "settings": {
+                "profile": "GoogleStyle"
+              }
+            },
+            "saveActions": {
+              "organizeImports": true
+            },
+            "completion": {
+              "importOrder": ["java", "javax", "jakarta", "org", "com"]
+            },
+            "inlayHints": {
+              "parameterNames": {
+                "enabled": "all"
+              }
+            }
+          }
+        }
+      },
+      "filetypes": ["java"],
+      "notes": "Requires Eclipse JDT Language Server (jdtls). Install via: brew install jdtls (macOS), or https://github.com/eclipse-jdtls/eclipse.jdt.ls"
+    }
+  }
+}
