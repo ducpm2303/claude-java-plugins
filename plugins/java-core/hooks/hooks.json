@@ -1,0 +1,31 @@
+{
+  "PostToolUse": [
+    {
+      "matcher": "Write|Edit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '[java-core] Java file edited. Reminder: run mvn compile -q or ./gradlew build -q to verify the build still passes.'"
+        }
+      ]
+    },
+    {
+      "matcher": "Write|Edit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '[java-core] Did you add or update tests for this change? Check for a corresponding *Test.java file.'"
+        }
+      ]
+    },
+    {
+      "matcher": "Bash",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '[java-core] After committing, consider running mvn verify or ./gradlew check for a full quality gate.'"
+        }
+      ]
+    }
+  ]
+}
