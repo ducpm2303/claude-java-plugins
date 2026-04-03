@@ -5,6 +5,5 @@
   "author": {
     "name": "java-plugins contributors"
   },
-  "keywords": ["java", "review", "refactor", "explain", "fix", "docs"],
-  "hooks": "./hooks/hooks.json"
+  "keywords": ["java", "review", "refactor", "explain", "fix", "docs"]
 }
