@@ -5,7 +5,5 @@
   "author": {
     "name": "java-plugins contributors"
   },
-  "keywords": ["java", "security", "owasp", "performance", "testing", "junit", "mockito", "testcontainers"],
-  "commands": ["commands/*.md"],
-  "rules": ["rules/*.md"]
+  "keywords": ["java", "security", "owasp", "performance", "testing", "junit", "mockito", "testcontainers"]
 }
