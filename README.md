@@ -6,8 +6,8 @@ A Claude Code plugin marketplace with 5 independently installable plugins for Ja
 
 | Plugin | Skills | Agents | Description |
 |---|---|---|---|
-| `java-core` | `/java-review`, `/java-refactor`, `/java-explain`, `/java-fix`, `/java-docs` | `java-architect` | General Java — code review, refactoring, explanation, fix, docs |
-| `java-spring` | `/java-scaffold` | `java-spring-expert` | Spring Boot — scaffolding and expert guidance |
+| `java-core` | `/java-review`, `/java-refactor`, `/java-explain`, `/java-fix`, `/java-docs`, `/java-health`, `/java-concurrency-review`, `/java-api-review`, `/java-migrate`, `/java-commit`, `/java-solid`, `/java-design-pattern` | `java-architect`, `java-build-resolver` | General Java — code review, refactoring, explanation, fix, docs, health scoring, concurrency, API design, migration, commits, SOLID, design patterns |
+| `java-spring` | `/java-scaffold`, `/java-jpa`, `/java-logging`, `/java-crud` | `java-spring-expert` | Spring Boot — scaffolding, JPA review, logging review, CRUD generation |
 | `java-security` | — | `java-security-reviewer` | Security — OWASP Top 10 review and hooks |
 | `java-testing` | `/java-test` | `java-test-engineer` | Testing — test generation and strategy |
 | `java-performance` | — | `java-performance-reviewer` | Performance — N+1, memory, threading review |
@@ -65,15 +65,25 @@ To get the latest plugin versions:
 ## Usage
 
 ### Skills (slash commands)
-| Command | What it does |
-|---|---|
-| `/java-review` | Review Java code for bugs, naming issues, and version-appropriate idioms |
-| `/java-refactor` | Suggest and apply version-gated refactorings |
-| `/java-explain` | Explain Java code in plain language |
-| `/java-fix` | Diagnose compile errors or stack traces |
-| `/java-docs` | Generate Javadoc for classes and methods |
-| `/java-scaffold` | Scaffold a Spring Boot project or feature |
-| `/java-test` | Generate JUnit 5 + Mockito unit or Testcontainers integration tests |
+| Command | Plugin | What it does |
+|---|---|---|
+| `/java-review` | `java-core` | Review Java code for bugs, naming issues, and version-appropriate idioms |
+| `/java-refactor` | `java-core` | Suggest and apply version-gated refactorings |
+| `/java-explain` | `java-core` | Explain Java code in plain language |
+| `/java-fix` | `java-core` | Diagnose compile errors or stack traces |
+| `/java-docs` | `java-core` | Generate Javadoc for classes and methods |
+| `/java-health` | `java-core` | Score codebase across Security, Tests, Performance, Quality (A–F grades) |
+| `/java-concurrency-review` | `java-core` | Review thread safety, race conditions, and Java 21 virtual thread compatibility |
+| `/java-api-review` | `java-core` | Review REST API design — HTTP methods, status codes, naming, versioning |
+| `/java-migrate` | `java-core` | Interactive migration guide: Java 8→11, 11→17, or 17→21 |
+| `/java-commit` | `java-core` | Generate a Conventional Commits message for staged Java changes |
+| `/java-solid` | `java-core` | Check all 5 SOLID principles with Java-specific patterns |
+| `/java-design-pattern` | `java-core` | Detect GoF patterns in code or recommend a pattern for a problem |
+| `/java-scaffold` | `java-spring` | Scaffold a Spring Boot project or feature |
+| `/java-jpa` | `java-spring` | Deep JPA review — N+1 queries, fetch strategies, projections, Specifications |
+| `/java-logging` | `java-spring` | Review logging — SLF4J best practices, MDC, structured logging, PII safety |
+| `/java-crud` | `java-spring` | Generate a complete CRUD feature (entity, repo, service, controller, DTOs, tests) |
+| `/java-test` | `java-testing` | Generate JUnit 5 + Mockito unit or Testcontainers integration tests |
 
 ### Agents
 Agents are specialist sub-agents Claude can delegate to. Reference them by name in conversation:
