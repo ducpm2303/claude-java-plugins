@@ -3,7 +3,7 @@
 # Usage: ./scripts/validate-plugins.sh [plugin-name]
 # Exit code: 0 if all pass, 1 if any fail
 
-set -euo pipefail
+set -uo pipefail
 
 PLUGINS_DIR="$(cd "$(dirname "$0")/.." && pwd)/plugins"
 ERRORS=0
@@ -15,8 +15,8 @@ GREEN='\033[0;32m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
-error()   { echo -e "${RED}  [ERROR]${NC} $1"; ((ERRORS++)); }
-warn()    { echo -e "${YELLOW}  [WARN]${NC}  $1"; ((WARNINGS++)); }
+error()   { echo -e "${RED}  [ERROR]${NC} $1"; ERRORS=$((ERRORS + 1)); }
+warn()    { echo -e "${YELLOW}  [WARN]${NC}  $1"; WARNINGS=$((WARNINGS + 1)); }
 ok()      { echo -e "${GREEN}  [OK]${NC}    $1"; }
 section() { echo -e "\n${CYAN}→ $1${NC}"; }
 
@@ -53,7 +53,7 @@ validate_plugin() {
     if [[ -d "$plugin_dir/skills" ]]; then
         local skill_count=0
         while IFS= read -r -d '' skill_file; do
-            ((skill_count++))
+            skill_count=$((skill_count + 1))
             local skill_name
             skill_name=$(basename "$(dirname "$skill_file")")
 
@@ -80,7 +80,7 @@ validate_plugin() {
     if [[ -d "$plugin_dir/commands" ]]; then
         local cmd_count=0
         while IFS= read -r -d '' cmd_file; do
-            ((cmd_count++))
+            cmd_count=$((cmd_count + 1))
             local cmd_name
             cmd_name=$(basename "$cmd_file" .md)
             if ! grep -q '^description:' "$cmd_file"; then
@@ -96,7 +96,7 @@ validate_plugin() {
     if [[ -d "$plugin_dir/rules" ]]; then
         local rule_count=0
         while IFS= read -r -d '' rule_file; do
-            ((rule_count++))
+            rule_count=$((rule_count + 1))
             local rule_name
             rule_name=$(basename "$rule_file" .md)
             if ! grep -q '^globs:' "$rule_file"; then
@@ -121,7 +121,7 @@ validate_plugin() {
     if [[ -d "$plugin_dir/agents" ]]; then
         local agent_count=0
         while IFS= read -r -d '' agent_file; do
-            ((agent_count++))
+            agent_count=$((agent_count + 1))
             local agent_name
             agent_name=$(basename "$agent_file" .md)
             if ! grep -q '^description:' "$agent_file"; then
