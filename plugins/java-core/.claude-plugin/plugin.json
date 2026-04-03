@@ -5,7 +5,5 @@
   "author": {
     "name": "java-plugins contributors"
   },
-  "keywords": ["java", "review", "refactor", "explain", "fix", "docs"],
-  "commands": ["commands/*.md"],
-  "rules": ["rules/*.md"]
+  "keywords": ["java", "review", "refactor", "explain", "fix", "docs"]
 }
