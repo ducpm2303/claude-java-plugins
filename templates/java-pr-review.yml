@@ -1,0 +1,130 @@
+# ============================================================
+# Java PR Review — powered by claude-java-plugins
+# ============================================================
+# Copy this file to .github/workflows/java-pr-review.yml
+# in your Java project.
+#
+# Requirements:
+#   1. Add ANTHROPIC_API_KEY to your repo secrets:
+#      Settings → Secrets and variables → Actions → New secret
+#   2. Install claude-java-plugins:
+#      /plugin marketplace add ducpm2303/claude-java-plugins
+#      /plugin install java-core@java-plugins
+#      /plugin install java-spring@java-plugins   # if Spring Boot project
+#      /plugin install java-quality@java-plugins  # for security + perf + test review
+#
+# What it does:
+#   - Reviews every PR that touches Java/build files
+#   - Runs security scan (OWASP Top 10)
+#   - Runs performance scan (N+1, threading, memory)
+#   - Checks test quality and coverage gaps
+#   - Posts a consolidated review comment on the PR
+# ============================================================
+
+name: Java PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - '**/*.java'
+      - '**/pom.xml'
+      - '**/build.gradle'
+      - '**/build.gradle.kts'
+
+# Cancel in-progress runs on the same PR to save API costs
+concurrency:
+  group: java-pr-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  java-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history for better diff context
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Optional: pin to a specific model for cost control
+          # claude_args: --model claude-sonnet-4-6
+          prompt: |
+            You are reviewing a Java pull request. Analyse only the changed files
+            in this PR (do not review unchanged files).
+
+            Run these three checks in sequence. Complete all three before posting.
+
+            ---
+
+            ## Check 1 — Code Review (java-core)
+
+            For each changed .java file:
+            - Logic errors, null pointer risks, or incorrect control flow
+            - Naming violations: classes should be PascalCase, methods camelCase,
+              constants SCREAMING_SNAKE_CASE
+            - Version-inappropriate patterns (flag Java 8 idioms if project uses Java 17+)
+            - Resource leaks (unclosed streams, connections)
+            - Missing or incorrect exception handling
+
+            ---
+
+            ## Check 2 — Security Scan (java-quality)
+
+            - Hardcoded credentials, API keys, or tokens in source code
+            - SQL string concatenation (SQL injection risk)
+            - Missing @Valid on @RequestBody parameters
+            - Logging of passwords, tokens, or PII
+            - Weak cryptography (MD5, SHA-1, DES)
+            - @CrossOrigin(origins = "*") in non-test code
+
+            ---
+
+            ## Check 3 — Performance Scan (java-quality)
+
+            - @OneToMany or @ManyToMany without FetchType.LAZY
+            - Repository method calls inside loops (N+1 pattern)
+            - findAll() without Pageable on large entity tables
+            - String concatenation inside loops (use StringBuilder)
+            - Creating DateTimeFormatter, Pattern, or ObjectMapper inside methods
+
+            ---
+
+            ## Output Format
+
+            Post a single consolidated comment structured as:
+
+            ### Java PR Review
+
+            **Summary:** [1-2 sentences about the overall change]
+
+            **Security** — [CLEAN / X issue(s) found]
+            **Performance** — [CLEAN / X issue(s) found]
+            **Code Quality** — [CLEAN / X issue(s) found]
+
+            ---
+
+            #### Issues (sorted by severity)
+
+            | Severity | File | Finding |
+            |----------|------|---------|
+            | 🔴 CRITICAL | `path/File.java:42` | SQL injection risk: string concat in query |
+            | 🟠 HIGH | `path/File.java:18` | N+1: repository call inside loop |
+            | 🟡 MEDIUM | `path/File.java:55` | Missing @Valid on request body |
+            | 🔵 NOTE | `path/File.java:10` | Consider using var (Java 10+) |
+
+            #### Positive Notes
+            [Highlight anything done well — good patterns, good test coverage, correct use of version features]
+
+            ---
+
+            Rules:
+            - Only report actual findings, not hypothetical ones
+            - Do NOT comment on formatting, whitespace, or import order (use a linter for that)
+            - Do NOT repeat findings — one entry per issue
+            - If all three checks are clean, post a short "LGTM" comment with a brief summary

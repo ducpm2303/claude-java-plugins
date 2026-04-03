@@ -1,0 +1,51 @@
+name: Validate Plugins
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate plugin structure
+        run: |
+          chmod +x scripts/validate-plugins.sh
+          ./scripts/validate-plugins.sh
+
+      - name: Validate JSON files
+        run: |
+          echo "Checking marketplace.json..."
+          jq empty .claude-plugin/marketplace.json
+          echo "Checking all plugin.json files..."
+          for f in plugins/*/.claude-plugin/plugin.json; do
+            echo "  $f"
+            jq empty "$f"
+          done
+          echo "Checking all hooks.json files..."
+          for f in plugins/*/hooks/hooks.json; do
+            echo "  $f"
+            jq empty "$f"
+          done
+          echo "All JSON valid."
+
+      - name: Check version consistency
+        run: |
+          MARKETPLACE_VERSION=$(jq -r '.metadata.version' .claude-plugin/marketplace.json)
+          echo "Marketplace version: $MARKETPLACE_VERSION"
+          FAIL=0
+          for f in plugins/*/.claude-plugin/plugin.json; do
+            PLUGIN_VERSION=$(jq -r '.version' "$f")
+            PLUGIN_NAME=$(jq -r '.name' "$f")
+            if [ "$PLUGIN_VERSION" != "$MARKETPLACE_VERSION" ]; then
+              echo "VERSION MISMATCH: $PLUGIN_NAME is $PLUGIN_VERSION, marketplace is $MARKETPLACE_VERSION"
+              FAIL=1
+            else
+              echo "  OK: $PLUGIN_NAME @ $PLUGIN_VERSION"
+            fi
+          done
+          exit $FAIL

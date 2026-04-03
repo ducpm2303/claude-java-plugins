@@ -153,6 +153,31 @@ brew install jdtls        # macOS
 
 ---
 
+## GitHub Actions — Automated PR Review
+
+Use the same skills that run locally to automatically review every Java PR in CI.
+
+### Quick setup
+
+1. Copy [`templates/java-pr-review.yml`](templates/java-pr-review.yml) to `.github/workflows/java-pr-review.yml` in your Java project
+2. Add `ANTHROPIC_API_KEY` to your repo secrets (Settings → Secrets → Actions)
+3. Push — every PR touching `.java` or build files gets an automated review
+
+### What gets reviewed
+
+Every PR automatically checks:
+- **Code quality** — naming, logic errors, null risks, resource leaks
+- **Security** — OWASP Top 10, hardcoded secrets, SQL injection, missing `@Valid`
+- **Performance** — N+1 queries, eager fetch on collections, missing pagination
+
+Results are posted as a single structured comment with severity-coded findings.
+
+### Our own CI
+
+This repo runs `.github/workflows/validate.yml` on every push — it runs `validate-plugins.sh` and verifies version consistency across all plugin manifests.
+
+---
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for a full authoring guide covering skills, rules, commands, and agents.

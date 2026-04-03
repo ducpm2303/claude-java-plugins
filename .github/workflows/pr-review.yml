@@ -1,0 +1,51 @@
+name: PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'plugins/**/*.md'
+      - 'plugins/**/*.json'
+      - 'scripts/**'
+
+concurrency:
+  group: pr-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Review this pull request to the claude-java-plugins repository.
+
+            Focus specifically on:
+            1. **SKILL.md quality** — does the description start with a verb and include trigger phrases? Is content version-gated where needed (Java 8+, Spring Boot 3.x+)?
+            2. **rules/*.md** — do new rule files have a `globs:` frontmatter that is as specific as possible?
+            3. **commands/*.md** — does the command description clearly state what it does and when to use it?
+            4. **hooks.json** — is the shell command safe? No destructive operations, no data exfiltration?
+            5. **plugin.json** — are name, version, description present? Is the version consistent with marketplace.json?
+            6. **References** — if a SKILL.md is over 80 lines, suggest moving templates to references/
+
+            Format your review as:
+            ## Summary
+            One paragraph overview of what changed.
+
+            ## Issues
+            For each issue: `file:line — [SEVERITY] description and suggestion`
+            Severities: `REQUIRED` (must fix), `SUGGESTED` (quality improvement), `NOTE` (informational)
+
+            ## Looks Good
+            Highlight anything well done.
+
+            Do NOT comment on prose style or subjective wording choices.
