@@ -6,5 +6,6 @@
     "name": "java-plugins contributors"
   },
   "keywords": ["java", "spring", "spring-boot", "scaffold", "rest", "jpa"],
-  "commands": ["commands/*.md"]
+  "commands": ["commands/*.md"],
+  "rules": ["rules/*.md"]
 }

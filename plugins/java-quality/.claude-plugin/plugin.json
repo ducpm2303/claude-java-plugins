@@ -6,5 +6,6 @@
     "name": "java-plugins contributors"
   },
   "keywords": ["java", "security", "owasp", "performance", "testing", "junit", "mockito", "testcontainers"],
-  "commands": ["commands/*.md"]
+  "commands": ["commands/*.md"],
+  "rules": ["rules/*.md"]
 }
