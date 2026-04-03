@@ -1,7 +1,7 @@
 {
   "name": "java-quality",
   "description": "Java quality toolkit — security (OWASP), performance (N+1, memory, threading), and testing (JUnit 5, Mockito, Testcontainers) for Java 8+ projects",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "author": {
     "name": "java-plugins contributors"
   },
