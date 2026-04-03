@@ -1,0 +1,9 @@
+{
+  "name": "java-spring",
+  "description": "Spring Boot scaffold skill and Spring expert agent for Java 8+ projects",
+  "version": "1.0.0",
+  "author": {
+    "name": "java-plugins contributors"
+  },
+  "keywords": ["java", "spring", "spring-boot", "scaffold", "rest", "jpa"]
+}
