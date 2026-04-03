@@ -1,10 +1,9 @@
 {
   "name": "java-security",
   "description": "Java security reviewer agent and post-edit security hooks for Java 8+ projects",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": {
     "name": "java-plugins contributors"
   },
-  "keywords": ["java", "security", "owasp", "injection", "authentication"],
-  "hooks": "./hooks/hooks.json"
+  "keywords": ["java", "security", "owasp", "injection", "authentication"]
 }

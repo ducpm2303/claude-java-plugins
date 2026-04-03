@@ -6,7 +6,7 @@ A Claude Code plugin marketplace with 5 independently installable plugins for Ja
 
 | Plugin | Skills | Agents | Description |
 |---|---|---|---|
-| `java-core` | `/java-review`, `/java-refactor`, `/java-explain`, `/java-fix`, `/java-docs`, `/java-health`, `/java-concurrency-review`, `/java-api-review`, `/java-migrate`, `/java-commit`, `/java-solid`, `/java-design-pattern` | `java-architect`, `java-build-resolver` | General Java — code review, refactoring, explanation, fix, docs, health scoring, concurrency, API design, migration, commits, SOLID, design patterns |
+| `java-core` | `/java-review`, `/java-refactor`, `/java-explain`, `/java-fix`, `/java-docs`, `/java-health`, `/java-concurrency-review`, `/java-api-review`, `/java-migrate`, `/java-commit`, `/java-solid`, `/java-design-pattern`, `/java-adr` | `java-architect`, `java-build-resolver` | General Java — code review, refactoring, explanation, fix, docs, health scoring, concurrency, API design, migration, commits, SOLID, design patterns, ADRs |
 | `java-spring` | `/java-scaffold`, `/java-jpa`, `/java-logging`, `/java-crud` | `java-spring-expert` | Spring Boot — scaffolding, JPA review, logging review, CRUD generation |
 | `java-security` | — | `java-security-reviewer` | Security — OWASP Top 10 review and hooks |
 | `java-testing` | `/java-test` | `java-test-engineer` | Testing — test generation and strategy |
@@ -79,6 +79,7 @@ To get the latest plugin versions:
 | `/java-commit` | `java-core` | Generate a Conventional Commits message for staged Java changes |
 | `/java-solid` | `java-core` | Check all 5 SOLID principles with Java-specific patterns |
 | `/java-design-pattern` | `java-core` | Detect GoF patterns in code or recommend a pattern for a problem |
+| `/java-adr` | `java-core` | Create, list, and manage Architecture Decision Records |
 | `/java-scaffold` | `java-spring` | Scaffold a Spring Boot project or feature |
 | `/java-jpa` | `java-spring` | Deep JPA review — N+1 queries, fetch strategies, projections, Specifications |
 | `/java-logging` | `java-spring` | Review logging — SLF4J best practices, MDC, structured logging, PII safety |

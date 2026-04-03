@@ -5,42 +5,42 @@
   },
   "metadata": {
     "description": "Java developer toolkit for Claude Code — general Java, Spring Boot, security, testing, and performance",
-    "version": "1.2.0"
+    "version": "2.0.0"
   },
   "plugins": [
     {
       "name": "java-core",
       "source": "./plugins/java-core",
-      "description": "General Java skills (review, refactor, explain, fix, docs, health, concurrency, API, migration, commit, SOLID, design patterns), architect + build-resolver agents, and Java coding standards",
-      "version": "1.2.0",
-      "keywords": ["java", "core", "review", "refactor", "solid", "design-patterns", "concurrency", "migrate"]
+      "description": "General Java skills (review, refactor, explain, fix, docs, health, concurrency, API, migration, commit, SOLID, design patterns, ADR), architect + build-resolver agents, and path-scoped Java coding standards",
+      "version": "2.0.0",
+      "keywords": ["java", "core", "review", "refactor", "solid", "design-patterns", "concurrency", "migrate", "adr"]
     },
     {
       "name": "java-spring",
       "source": "./plugins/java-spring",
       "description": "Spring Boot skills (scaffold, JPA review, logging review, CRUD generator) and Spring expert agent",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "keywords": ["java", "spring", "spring-boot", "scaffold", "jpa", "crud", "logging"]
     },
     {
       "name": "java-security",
       "source": "./plugins/java-security",
       "description": "Java security reviewer agent and post-edit security hooks",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "keywords": ["java", "security", "owasp"]
     },
     {
       "name": "java-testing",
       "source": "./plugins/java-testing",
       "description": "Java test generation skill and test engineer agent",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "keywords": ["java", "testing", "junit", "mockito"]
     },
     {
       "name": "java-performance",
       "source": "./plugins/java-performance",
       "description": "Java performance reviewer agent",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "keywords": ["java", "performance", "jpa", "optimization"]
     }
   ]
