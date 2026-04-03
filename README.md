@@ -1,18 +1,14 @@
 # Java Plugins for Claude Code
 
-A Claude Code plugin marketplace with 5 independently installable plugins for Java developers.
+A Claude Code plugin marketplace with 3 focused plugins for Java developers. All plugins support **Java 8 through Java 21** and tailor advice to your target Java version.
 
 ## Plugins
 
-| Plugin | Skills | Agents | Description |
+| Plugin | Skills | Agents | Install when |
 |---|---|---|---|
-| `java-core` | `/java-review`, `/java-refactor`, `/java-explain`, `/java-fix`, `/java-docs`, `/java-health`, `/java-concurrency-review`, `/java-api-review`, `/java-migrate`, `/java-commit`, `/java-solid`, `/java-design-pattern`, `/java-adr` | `java-architect`, `java-build-resolver` | General Java — code review, refactoring, explanation, fix, docs, health scoring, concurrency, API design, migration, commits, SOLID, design patterns, ADRs |
-| `java-spring` | `/java-scaffold`, `/java-jpa`, `/java-logging`, `/java-crud` | `java-spring-expert` | Spring Boot — scaffolding, JPA review, logging review, CRUD generation |
-| `java-security` | — | `java-security-reviewer` | Security — OWASP Top 10 review and hooks |
-| `java-testing` | `/java-test` | `java-test-engineer` | Testing — test generation and strategy |
-| `java-performance` | — | `java-performance-reviewer` | Performance — N+1, memory, threading review |
-
-All plugins support **Java 8 through Java 21** and tailor advice to your target Java version.
+| `java-core` | 13 skills | `java-architect`, `java-build-resolver` | Every Java project |
+| `java-spring` | 4 skills | `java-spring-expert` | Spring Boot projects |
+| `java-quality` | 3 skills | `java-security-reviewer`, `java-performance-reviewer`, `java-test-engineer` | Quality enforcement |
 
 ## Installation
 
@@ -22,77 +18,82 @@ All plugins support **Java 8 through Java 21** and tailor advice to your target 
 /plugin marketplace add ducpm2303/claude-java-plugins
 ```
 
-This registers the marketplace once. Claude Code will fetch the plugin catalog from `https://github.com/ducpm2303/claude-java-plugins`.
-
 ### Step 2 — Install plugins
 
-Install only what you need:
-
 ```shell
-/plugin install java-core@java-plugins
-/plugin install java-spring@java-plugins
-/plugin install java-security@java-plugins
-/plugin install java-testing@java-plugins
-/plugin install java-performance@java-plugins
+/plugin install java-core@java-plugins       # every Java project
+/plugin install java-spring@java-plugins     # Spring Boot projects
+/plugin install java-quality@java-plugins    # security + performance + testing
 ```
-
-Or install the full suite at once:
-
-```shell
-/plugin install java-core@java-plugins && \
-/plugin install java-spring@java-plugins && \
-/plugin install java-security@java-plugins && \
-/plugin install java-testing@java-plugins && \
-/plugin install java-performance@java-plugins
-```
-
-### Step 3 — Verify installation
-
-```shell
-/plugin list
-```
-
-You should see all installed java-* plugins listed.
 
 ### Updating
-
-To get the latest plugin versions:
 
 ```shell
 /plugin marketplace update java-plugins
 ```
 
-## Usage
+---
 
-### Skills (slash commands)
-| Command | Plugin | What it does |
+## Skills (slash commands)
+
+### java-core
+
+| Command | What it does |
+|---|---|
+| `/java-review` | Review Java code for bugs, naming issues, and version-appropriate idioms |
+| `/java-refactor` | Suggest and apply version-gated refactorings |
+| `/java-explain` | Explain Java code in plain language |
+| `/java-fix` | Diagnose compile errors or stack traces |
+| `/java-docs` | Generate Javadoc for classes and methods |
+| `/java-health` | Structural health score across Security, Tests, Performance, Quality (A–F) |
+| `/java-concurrency-review` | Review thread safety, race conditions, and Java 21 virtual thread compatibility |
+| `/java-api-review` | Review REST API design — HTTP methods, status codes, naming, versioning |
+| `/java-migrate` | Interactive migration guide: Java 8→11, 11→17, or 17→21 |
+| `/java-commit` | Generate a Conventional Commits message for staged Java changes |
+| `/java-solid` | Check all 5 SOLID principles with Java-specific patterns |
+| `/java-design-pattern` | Detect GoF patterns in code or recommend a pattern for a problem |
+| `/java-adr` | Create, list, and manage Architecture Decision Records |
+
+### java-spring
+
+| Command | What it does |
+|---|---|
+| `/java-scaffold` | Scaffold a brand-new Spring Boot project (2.7.x – 4.0.x) |
+| `/java-jpa` | Deep JPA review — N+1 queries, fetch strategies, projections, Specifications |
+| `/java-logging` | Review logging — SLF4J, MDC, structured logging, PII safety |
+| `/java-crud` | Generate a complete CRUD feature in an existing project |
+
+### java-quality
+
+| Command | What it does |
+|---|---|
+| `/java-security-check` | Quick OWASP scan — secrets, injection, weak crypto, Spring Security misconfigs |
+| `/java-perf-check` | Quick performance scan — N+1, memory, threading, algorithmic hotspots |
+| `/java-test` | Generate JUnit 5 + Mockito unit or Testcontainers integration tests (auto-detects project) |
+
+---
+
+## Agents
+
+Agents are specialist sub-agents Claude can delegate to:
+
+| Agent | Plugin | Use for |
 |---|---|---|
-| `/java-review` | `java-core` | Review Java code for bugs, naming issues, and version-appropriate idioms |
-| `/java-refactor` | `java-core` | Suggest and apply version-gated refactorings |
-| `/java-explain` | `java-core` | Explain Java code in plain language |
-| `/java-fix` | `java-core` | Diagnose compile errors or stack traces |
-| `/java-docs` | `java-core` | Generate Javadoc for classes and methods |
-| `/java-health` | `java-core` | Score codebase across Security, Tests, Performance, Quality (A–F grades) |
-| `/java-concurrency-review` | `java-core` | Review thread safety, race conditions, and Java 21 virtual thread compatibility |
-| `/java-api-review` | `java-core` | Review REST API design — HTTP methods, status codes, naming, versioning |
-| `/java-migrate` | `java-core` | Interactive migration guide: Java 8→11, 11→17, or 17→21 |
-| `/java-commit` | `java-core` | Generate a Conventional Commits message for staged Java changes |
-| `/java-solid` | `java-core` | Check all 5 SOLID principles with Java-specific patterns |
-| `/java-design-pattern` | `java-core` | Detect GoF patterns in code or recommend a pattern for a problem |
-| `/java-adr` | `java-core` | Create, list, and manage Architecture Decision Records |
-| `/java-scaffold` | `java-spring` | Scaffold a Spring Boot project or feature |
-| `/java-jpa` | `java-spring` | Deep JPA review — N+1 queries, fetch strategies, projections, Specifications |
-| `/java-logging` | `java-spring` | Review logging — SLF4J best practices, MDC, structured logging, PII safety |
-| `/java-crud` | `java-spring` | Generate a complete CRUD feature (entity, repo, service, controller, DTOs, tests) |
-| `/java-test` | `java-testing` | Generate JUnit 5 + Mockito unit or Testcontainers integration tests |
+| `java-architect` | `java-core` | Project structure, hexagonal/layered architecture, multi-module Maven, design patterns |
+| `java-build-resolver` | `java-core` | Fix Maven/Gradle/javac build errors with minimal changes |
+| `java-spring-expert` | `java-spring` | Spring Boot best practices, Spring Data JPA, Spring Security, REST API design |
+| `java-security-reviewer` | `java-quality` | Full OWASP Top 10 deep-dive, Spring Security misconfig, secrets audit |
+| `java-performance-reviewer` | `java-quality` | Deep JPA/memory/threading performance analysis with before/after fixes |
+| `java-test-engineer` | `java-quality` | Test strategy, coverage analysis, Testcontainers setup, PITest mutation testing |
 
-### Agents
-Agents are specialist sub-agents Claude can delegate to. Reference them by name in conversation:
-- *"Ask the java-architect agent to design a package structure for this domain"*
-- *"Use the java-security-reviewer agent to check this controller for OWASP vulnerabilities"*
-- *"Have the java-test-engineer agent write a test strategy for this service"*
+**Example usage:**
+- *"Ask the `java-architect` agent to design a hexagonal architecture for this order service"*
+- *"Use the `java-security-reviewer` agent to do a full OWASP audit of this controller"*
+- *"Have the `java-test-engineer` agent write a test strategy for this service layer"*
 
-## Adding a new ecosystem plugin (for contributors)
+---
+
+## Contributing
 
 1. Create `plugins/java-<ecosystem>/` following the same structure as an existing plugin
 2. Add an entry to `.claude-plugin/marketplace.json`

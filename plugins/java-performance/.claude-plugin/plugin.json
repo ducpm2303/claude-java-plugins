@@ -1,9 +1,0 @@
-{
-  "name": "java-performance",
-  "description": "Java performance reviewer agent for Java 8+ projects",
-  "version": "2.0.0",
-  "author": {
-    "name": "java-plugins contributors"
-  },
-  "keywords": ["java", "performance", "jpa", "n+1", "memory", "threading", "optimization"]
-}

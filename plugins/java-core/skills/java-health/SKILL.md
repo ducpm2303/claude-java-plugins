@@ -24,11 +24,14 @@ Check for:
 
 Full score = 25. Deduct per finding.
 
-### B. Test Coverage Assessment (0–25 points)
+### B. Test Structure Assessment (0–25 points)
+
+> **Note:** This is a *structural* assessment — Claude cannot run your test suite or measure real line coverage. For actual coverage numbers run `mvn test jacoco:report` or `./gradlew test jacocoTestReport`.
+
 Check for:
 - Presence of test files for each service class (-5 per missing service test, max -15)
-- Use of H2 instead of Testcontainers for DB tests (-5)
-- Missing exception path tests (-3 per method, max -9)
+- Use of H2 instead of Testcontainers for DB integration tests (-5)
+- Missing exception path tests (no test method with "throws", "exception", or "notFound" in name) (-3 per service class, max -9)
 - Tests that mock the class under test (-4)
 
 Full score = 25. Deduct per finding.
@@ -83,6 +86,7 @@ List the 3 highest-impact improvements ranked by score gain:
 ## Step 5 — Offer drill-downs
 After the report, offer:
 - "Run `/java-review` for detailed code quality findings"
-- "Ask `java-security-reviewer` for a full OWASP analysis"
-- "Ask `java-performance-reviewer` for performance deep-dive"
+- "Run `/java-security-check` or ask `java-security-reviewer` for a full OWASP analysis"
+- "Run `/java-perf-check` or ask `java-performance-reviewer` for performance deep-dive"
 - "Run `/java-test` to generate missing tests"
+- "For real coverage numbers: `mvn test jacoco:report` or `./gradlew test jacocoTestReport`"
