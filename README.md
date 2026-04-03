@@ -88,6 +88,10 @@ Agents are specialist sub-agents Claude can delegate to. Reference them by name 
 3. Bump the marketplace `version` field
 4. Open a PR
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=ducpm2303/claude-java-plugins&type=Date)](https://star-history.com/#ducpm2303/claude-java-plugins&Date)
+
 ## Requirements
 
 - Claude Code CLI installed and configured
