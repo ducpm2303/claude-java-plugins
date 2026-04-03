@@ -4,11 +4,11 @@ A Claude Code plugin marketplace with 3 focused plugins for Java developers. All
 
 ## Plugins
 
-| Plugin | Skills | Agents | Install when |
-|---|---|---|---|
-| `java-core` | 13 skills | `java-architect`, `java-build-resolver` | Every Java project |
-| `java-spring` | 4 skills | `java-spring-expert` | Spring Boot projects |
-| `java-quality` | 3 skills | `java-security-reviewer`, `java-performance-reviewer`, `java-test-engineer` | Quality enforcement |
+| Plugin | Skills | Commands | Agents | Install when |
+|---|---|---|---|---|
+| `java-core` | 13 | 2 | `java-architect`, `java-build-resolver` | Every Java project |
+| `java-spring` | 4 | 2 | `java-spring-expert` | Spring Boot projects |
+| `java-quality` | 3 | 1 | `java-security-reviewer`, `java-performance-reviewer`, `java-test-engineer` | Quality enforcement |
 
 ## Installation
 
@@ -34,42 +34,70 @@ A Claude Code plugin marketplace with 3 focused plugins for Java developers. All
 
 ---
 
-## Skills (slash commands)
+## Skills (auto-invoked)
+
+Skills activate automatically based on context, or invoke them explicitly.
+
+### java-core
+
+| Skill | What it does |
+|---|---|
+| `/java-core:java-review` | Review Java code for bugs, naming issues, and version-appropriate idioms |
+| `/java-core:java-refactor` | Suggest and apply version-gated refactorings |
+| `/java-core:java-explain` | Explain Java code in plain language |
+| `/java-core:java-fix` | Diagnose compile errors or stack traces |
+| `/java-core:java-docs` | Generate Javadoc for classes and methods |
+| `/java-core:java-health` | Structural health score across Security, Tests, Performance, Quality (A–F) |
+| `/java-core:java-concurrency-review` | Review thread safety, race conditions, and Java 21 virtual thread compatibility |
+| `/java-core:java-api-review` | Review REST API design — HTTP methods, status codes, naming, versioning |
+| `/java-core:java-migrate` | Interactive migration guide: Java 8→11, 11→17, or 17→21 |
+| `/java-core:java-commit` | Generate a Conventional Commits message for staged Java changes |
+| `/java-core:java-solid` | Check all 5 SOLID principles with Java-specific patterns |
+| `/java-core:java-design-pattern` | Detect GoF patterns in code or recommend a pattern for a problem |
+| `/java-core:java-adr` | Create, list, and manage Architecture Decision Records |
+
+### java-spring
+
+| Skill | What it does |
+|---|---|
+| `/java-spring:java-scaffold` | Scaffold a brand-new Spring Boot project (2.7.x – 4.0.x) |
+| `/java-spring:java-jpa` | Deep JPA review — N+1 queries, fetch strategies, projections, Specifications |
+| `/java-spring:java-logging` | Review logging — SLF4J, MDC, structured logging, PII safety |
+| `/java-spring:java-crud` | Generate a complete CRUD feature in an existing project |
+
+### java-quality
+
+| Skill | What it does |
+|---|---|
+| `/java-quality:java-security-check` | Quick OWASP scan — secrets, injection, weak crypto, Spring Security misconfigs |
+| `/java-quality:java-perf-check` | Quick performance scan — N+1, memory, threading, algorithmic hotspots |
+| `/java-quality:java-test` | Generate JUnit 5 + Mockito unit or Testcontainers integration tests |
+
+---
+
+## Commands (explicit slash commands)
+
+Commands are explicitly triggered workflows — builds, analysis runs, and reports.
 
 ### java-core
 
 | Command | What it does |
 |---|---|
-| `/java-review` | Review Java code for bugs, naming issues, and version-appropriate idioms |
-| `/java-refactor` | Suggest and apply version-gated refactorings |
-| `/java-explain` | Explain Java code in plain language |
-| `/java-fix` | Diagnose compile errors or stack traces |
-| `/java-docs` | Generate Javadoc for classes and methods |
-| `/java-health` | Structural health score across Security, Tests, Performance, Quality (A–F) |
-| `/java-concurrency-review` | Review thread safety, race conditions, and Java 21 virtual thread compatibility |
-| `/java-api-review` | Review REST API design — HTTP methods, status codes, naming, versioning |
-| `/java-migrate` | Interactive migration guide: Java 8→11, 11→17, or 17→21 |
-| `/java-commit` | Generate a Conventional Commits message for staged Java changes |
-| `/java-solid` | Check all 5 SOLID principles with Java-specific patterns |
-| `/java-design-pattern` | Detect GoF patterns in code or recommend a pattern for a problem |
-| `/java-adr` | Create, list, and manage Architecture Decision Records |
+| `/java-core:build` | Run a clean Maven/Gradle build and report test results or compile errors |
+| `/java-core:check` | Run configured static analysis (Checkstyle, SpotBugs, PMD) and report findings |
 
 ### java-spring
 
 | Command | What it does |
 |---|---|
-| `/java-scaffold` | Scaffold a brand-new Spring Boot project (2.7.x – 4.0.x) |
-| `/java-jpa` | Deep JPA review — N+1 queries, fetch strategies, projections, Specifications |
-| `/java-logging` | Review logging — SLF4J, MDC, structured logging, PII safety |
-| `/java-crud` | Generate a complete CRUD feature in an existing project |
+| `/java-spring:run` | Start the Spring Boot app locally with pre-flight checks (env vars, DB) |
+| `/java-spring:routes` | Print a REST endpoint table scanned from all `@RestController` classes |
 
 ### java-quality
 
 | Command | What it does |
 |---|---|
-| `/java-security-check` | Quick OWASP scan — secrets, injection, weak crypto, Spring Security misconfigs |
-| `/java-perf-check` | Quick performance scan — N+1, memory, threading, algorithmic hotspots |
-| `/java-test` | Generate JUnit 5 + Mockito unit or Testcontainers integration tests (auto-detects project) |
+| `/java-quality:audit` | Full quality audit: security + performance + test coverage in one combined report |
 
 ---
 
@@ -93,11 +121,46 @@ Agents are specialist sub-agents Claude can delegate to:
 
 ---
 
+## Auto-activating Rules
+
+Each plugin includes path-scoped rules that activate automatically when you open matching files — no manual invocation needed.
+
+| Rule file | Activates for | Enforces |
+|---|---|---|
+| `java-core` naming-conventions | `**/*.java` | Class/method/variable/package naming |
+| `java-core` project-structure | `**/pom.xml`, `**/build.gradle*` | Dependency scopes, version pinning, Java toolchain |
+| `java-spring` controller-conventions | `**/*Controller.java` | `ResponseEntity` returns, `@Valid`, HTTP status codes |
+| `java-spring` service-conventions | `**/*Service.java` | Constructor injection, `@Transactional(readOnly)`, DTO mapping |
+| `java-spring` entity-conventions | `**/*Entity.java`, `**/entity/*.java` | Fetch types, auditing timestamps, soft delete, equality |
+| `java-quality` security-rules | `**/*.java` | No secrets in logs, no SQL concat, input validation |
+| `java-quality` test-conventions | `**/*Test.java`, `**/*IT.java` | AAA pattern, AssertJ, Testcontainers, naming |
+
+---
+
+## LSP Integration
+
+`java-core` includes a `.lsp.json` configuring [Eclipse JDT Language Server (jdtls)](https://github.com/eclipse-jdtls/eclipse.jdt.ls) for real-time code intelligence:
+- Diagnostics and type checking
+- Auto import organization
+- Inlay parameter hints
+- Google Style formatting
+
+**Install jdtls:**
+```shell
+brew install jdtls        # macOS
+# or download from https://github.com/eclipse-jdtls/eclipse.jdt.ls/releases
+```
+
+---
+
 ## Contributing
 
-1. Create `plugins/java-<ecosystem>/` following the same structure as an existing plugin
-2. Add an entry to `.claude-plugin/marketplace.json`
-3. Bump the marketplace `version` field
+See [CONTRIBUTING.md](CONTRIBUTING.md) for a full authoring guide covering skills, rules, commands, and agents.
+
+Quick steps:
+1. Follow the structure in an existing plugin
+2. Run `./scripts/validate-plugins.sh` — must pass with zero errors
+3. Add an entry to `.claude-plugin/marketplace.json`
 4. Open a PR
 
 ## Star History
@@ -108,3 +171,4 @@ Agents are specialist sub-agents Claude can delegate to:
 
 - Claude Code CLI installed and configured
 - Git (for marketplace installation from GitHub)
+- (Optional) [jdtls](https://github.com/eclipse-jdtls/eclipse.jdt.ls) for LSP code intelligence
