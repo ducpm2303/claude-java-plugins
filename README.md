@@ -7,7 +7,7 @@ A Claude Code plugin marketplace with 3 focused plugins for Java developers. All
 | Plugin | Skills | Commands | Agents | Install when |
 |---|---|---|---|---|
 | `java-core` | 14 | 2 | `java-architect`, `java-build-resolver` | Every Java project |
-| `java-spring` | 6 | 2 | `java-spring-expert` | Spring Boot projects |
+| `java-spring` | 7 | 2 | `java-spring-expert` | Spring Boot projects |
 | `java-quality` | 3 | 1 | `java-security-reviewer`, `java-performance-reviewer`, `java-test-engineer` | Quality enforcement |
 
 ## Quick Setup (5 minutes)
@@ -75,6 +75,7 @@ Skills activate automatically based on context, or invoke them explicitly.
 | `/java-spring:java-crud` | Generate a complete CRUD feature in an existing project |
 | `/java-spring:java-security` | Review or generate Spring Security config — JWT, OAuth2, method security, CORS (Boot 2.x & 3.x) |
 | `/java-spring:java-openapi` | Generate or review OpenAPI/Swagger docs — `@Tag`, `@Operation`, `@Schema`, JWT auth scheme (springdoc v1/v2) |
+| `/java-spring:java-spring-ai` | Add AI features to Spring Boot — ChatClient, RAG, tool calling, memory (Spring AI 1.x / LangChain4J) |
 
 ### java-quality
 
