@@ -7,7 +7,7 @@ A Claude Code plugin marketplace with 3 focused plugins for Java developers. All
 | Plugin | Skills | Commands | Agents | Install when |
 |---|---|---|---|---|
 | `java-core` | 14 | 2 | `java-architect`, `java-build-resolver` | Every Java project |
-| `java-spring` | 9 | 2 | `java-spring-expert` | Spring Boot projects |
+| `java-spring` | 10 | 2 | `java-spring-expert` | Spring Boot projects |
 | `java-quality` | 3 | 1 | `java-security-reviewer`, `java-performance-reviewer`, `java-test-engineer` | Quality enforcement |
 
 ## Quick Setup (5 minutes)
@@ -78,6 +78,7 @@ Skills activate automatically based on context, or invoke them explicitly.
 | `/java-spring:java-spring-ai` | Add AI features to Spring Boot — ChatClient, RAG, tool calling, memory (Spring AI 1.x / LangChain4J) |
 | `/java-spring:java-resilience` | Add Resilience4J patterns — circuit breaker, retry, rate limiter, bulkhead, timeout (Boot 2.x & 3.x) |
 | `/java-spring:java-cache` | Add or review Spring Cache — Caffeine (single-instance) or Redis (distributed), @Cacheable/@CacheEvict/@CachePut |
+| `/java-spring:java-event-driven` | Implement event-driven patterns — Spring App Events, domain events, Kafka, RabbitMQ, outbox pattern |
 
 ### java-quality
 
